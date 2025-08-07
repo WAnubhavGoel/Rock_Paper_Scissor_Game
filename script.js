@@ -1,45 +1,87 @@
-let humanScore=0;
-let computerScore=0;
+let humanScore = 0;
+let computerScore = 0;
+let roundsPlayed=0;
+let totalRounds=5;
+
+const scorePlayer = document.querySelector(".player-score");
+const scoreComputer = document.querySelector(".computer-score");
+
+function updateScore() {
+  scorePlayer.textContent = `Player: ${humanScore}`;
+  scoreComputer.textContent = `Computer: ${computerScore}`;
+}
+updateScore();
+let rock=document.querySelector(".Rock");
+let paper=document.querySelector(".Paper");
+let scissors=document.querySelector(".Scissors");
+let heading=document.querySelector(".heading");
+let playerChoice=document.querySelector(".player-choice");
+let computerChoice=document.querySelector(".computer-choice");
+let playerImage=document.querySelector("#Player-image");
+let computerImage=document.querySelector("#Computer-image");
+
+rock.addEventListener("click", () => {
+  playRound("rock", getComputerChoice().toLowerCase());
+  playerImage.src="./Images/hand.jpeg";
+});
+
+paper.addEventListener("click", () => {
+  playRound("paper", getComputerChoice().toLowerCase());
+  playerImage.src="./Images/paper.jpeg";
+});
+
+scissors.addEventListener("click", () => {
+  playRound("scissors", getComputerChoice().toLowerCase());
+  playerImage.src="./Images/scissor.jpeg";
+});
+
 function getComputerChoice(){
     let a=Math.ceil(Math.random()*3);
     if(a==1){
+        computerImage.src="./Images/hand.jpeg";
         return "Rock";
     }
     if(a==2){
+        computerImage.src="./Images/paper.jpeg";
         return "Paper";
     }
     if(a==3){
+        computerImage.src="./Images/scissor.jpeg";
         return "Scissors";
     }
 }
+
 function playRound(hum,com){
     if(hum==com){
-        console.log("Its a draw");
+        heading.textContent="Its a draw";
     }
     else if ((hum=="rock" && com=="scissors")||(hum=="paper" && com=="rock")||(hum=="scissors" && com=="paper")) {
-        console.log(`You Win!, ${hum} beats ${com}`);
+        heading.textContent=`You Win!`;
         humanScore++;
+        updateScore();
     }
     else{
-        console.log(`You Lose!, ${com} beats ${hum}`);
+        heading.textContent=`You Lose!`;
         computerScore++;
+        updateScore();
     }
+    roundsPlayed++;
+    checkForWinner();
 }
-function playGame(){
-    const humanSelection=prompt("Please enter your choice");
-    const computerSelection=getComputerChoice();
-    playRound(humanSelection.toLocaleLowerCase(),computerSelection.toLocaleLowerCase());
-}
-for(let i=0;i<5;i++){
-    playGame();
-}
-console.log(`Final Score: Human: ${humanScore} Computer: ${computerScore}`);
-if(humanScore>computerScore){
-    console.log("Human Wins");
-}
-else if(humanScore==computerScore){
-    console.log("Its a tie!");
-}
-else{
-    console.log("Computer Wins")
+
+// console.log(`Final Score: Human: ${humanScore} Computer: ${computerScore}`);
+
+function checkForWinner(){
+    if(roundsPlayed==totalRounds){
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+        if (humanScore > computerScore) {
+      heading.textContent = `Game Over: You won the match ${humanScore} to ${computerScore}! 🎉`;
+        } else if (computerScore > humanScore) {
+        heading.textContent = `Game Over: Computer won the match ${computerScore} to ${humanScore}! `;
+        } else {
+        heading.textContent = `Game Over: It's a tie, ${humanScore} to ${computerScore}!`;
+        }
+    }
 }

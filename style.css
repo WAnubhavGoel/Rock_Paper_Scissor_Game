@@ -1,0 +1,50 @@
+@import url("https://use.typekit.net/uhv1cmv.css");
+@import url("https://use.typekit.net/bsd1ucz.css");
+body{
+    min-height: 100vh;
+    font-family: Roboto;
+}
+.game{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: erbaum;
+}
+img{
+    width: 290px;
+    height: 290px;
+    border-radius: 20%;
+    background-color: #F5F5F5;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: solid black 1px;
+}
+.main{
+    display: flex;
+    justify-content: space-evenly;
+}
+.player-score, .computer-score{
+    font-size: 25px;
+    margin-top: 20px;
+    padding-left: 40px;
+    color: #565454;
+}
+button{
+    display: inline-block;
+    width: 150px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    font-family: ;
+    font-weight: bold;
+}
+.choice{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    
+}
