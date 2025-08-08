@@ -22,31 +22,31 @@ let computerImage=document.querySelector("#Computer-image");
 
 rock.addEventListener("click", () => {
   playRound("rock", getComputerChoice().toLowerCase());
-  playerImage.src="./Images/hand.jpeg";
+  playerImage.src="./Images/hand.png";
 });
 
 paper.addEventListener("click", () => {
   playRound("paper", getComputerChoice().toLowerCase());
-  playerImage.src="./Images/paper.jpeg";
+  playerImage.src="./Images/paper.png";
 });
 
 scissors.addEventListener("click", () => {
   playRound("scissors", getComputerChoice().toLowerCase());
-  playerImage.src="./Images/scissor.jpeg";
+  playerImage.src="./Images/scissor.png";
 });
 
 function getComputerChoice(){
     let a=Math.ceil(Math.random()*3);
     if(a==1){
-        computerImage.src="./Images/hand.jpeg";
+        computerImage.src="./Images/hand.png";
         return "Rock";
     }
     if(a==2){
-        computerImage.src="./Images/paper.jpeg";
+        computerImage.src="./Images/paper.png";
         return "Paper";
     }
     if(a==3){
-        computerImage.src="./Images/scissor.jpeg";
+        computerImage.src="./Images/scissor.png";
         return "Scissors";
     }
 }
